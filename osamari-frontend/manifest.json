@@ -5,7 +5,8 @@
   "permissions": ["scripting", "activeTab"],
   "host_permissions": ["<all_urls>"],
   "action": {
-    "default_title": "Convert Page to Markdown"
+    "default_title": "Convert Page to Markdown",
+    "default_popup": "popup.html"
   },
   "background": {
     "service_worker": "background.js"

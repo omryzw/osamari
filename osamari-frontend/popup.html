@@ -2,8 +2,39 @@
 <html>
 <head><title>Extension</title></head>
 <body>
-  <button id="fetchBtn">Get Message</button>
-  <p id="message"></p>
+  <div id="container">
+    <button id="sendBtn">Summarize</button>
+    <div id="loading" style="display:none;">
+      <div class="spinner"></div>
+      <span>Summarizing...</span>
+    </div>
+    <div id="summary" style="display:none;"></div>
+  </div>
+  <style>
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #summary {
+      margin-top: 16px;
+      white-space: pre-wrap;
+      background: #f8f8f8;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
   <script src="popup.js"></script>
 </body>
 </html>

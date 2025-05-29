@@ -1,4 +1,1 @@
-const script = document.createElement('script');
-script.src = 'https://unpkg.com/turndown/dist/turndown.js';
-script.onload = () => console.log('Turndown loaded');
-document.head.appendChild(script);
+// Turndown injection is now handled by popup.js when needed. No action needed here.

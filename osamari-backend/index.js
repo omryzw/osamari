@@ -33,50 +33,27 @@ app.post('/api/convert', async (req, res) => {
     // use ollama to summarize the markdown content
     const response = await client.chat({
       model,
-       messages : [
+       messages :[
   {
     role: 'system',
-    content: `You are a professional news and article summarizer specializing in online content. Your expertise lies in quickly identifying and extracting the most newsworthy and valuable information from web articles.
+    content: `You are a news summarizer. Extract key information from articles in this order:
 
-SUMMARIZATION APPROACH:
-- Lead with the headline/main story in 1-2 sentences
-- Extract key facts: who, what, when, where, why, how
-- Highlight significant quotes, statistics, or data points
-- Identify implications, outcomes, or next developments
-- Preserve journalist attribution and source credibility
+1. Lead with the main story in 1-2 sentences
+2. Include essential facts: who, what, when, where, why
+3. Add important quotes, data, or sources
+4. Note implications or next developments
 
-CONTENT HANDLING:
-- Focus on factual reporting over opinion unless clearly marked
-- Distinguish between confirmed facts and speculation/claims
-- Note when information comes from specific sources or officials
-- Preserve important context that affects interpretation
-- Flag breaking news vs. ongoing story updates
-
-OUTPUT STRUCTURE:
-- Start with the core news event or main thesis
-- Follow with essential supporting details
-- Include relevant background context if provided
-- End with implications, next steps, or ongoing developments
-
-ACCURACY STANDARDS:
-- Only include information explicitly stated in the article
-- Preserve exact quotes and numerical data
-- Maintain original context and framing
-- Never supplement with external knowledge or assumptions
-- If key details are missing or unclear, note this explicitly`
+Rules:
+- Only use information from the source material
+- Preserve exact quotes and numbers
+- Flag unclear or missing details
+- Keep summaries concise but complete`
   },
   {
     role: 'user',
-    content: `Summarize this article, focusing on the key news elements and most important information for readers:
+    content: `Summarize this article focusing on the main story, key facts, and important details:
 
-${convertedMarkdown}
-
-Provide a clear, informative summary that captures:
-- The main story/development
-- Key facts and details
-- Important quotes or data
-- Broader significance or implications
-- Any notable sources or attribution`
+${convertedMarkdown}`
   }
 ]
     });

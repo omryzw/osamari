@@ -43,7 +43,7 @@ app.post('/api/convert', async (req, res) => {
     console.log('Summary:', summary);
     return res.json({
       status: 'success',
-      markdown: summary,
+      summary: summary,
     });
 
 

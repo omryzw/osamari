@@ -30,7 +30,7 @@ Osamari is a Chrome extension that lets you instantly summarize the content of a
 ### 1. Clone the Repository
 
 ```
-git clone <your-repo-url>
+git clone https://github.com/omryzw/osamari
 cd osamari
 ```
 

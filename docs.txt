@@ -1,0 +1,48 @@
+==============================
+Chrome Extension: Page to Markdown Sender
+==============================
+
+This project allows you to extract the content of any web page using a Chrome extension, convert it to Markdown format, and send it to a Node.js backend for processing or storage.
+
+-------------
+Project Structure
+-------------
+osamari-frontend/
+├── manifest.json         # Chrome extension config
+├── background.js         # Runs on extension icon click, injects script
+├── content.js            # Injects Turndown script into the page
+├── popup.html            # Extension popup UI (if any)
+├── popup.js              # Popup script (if any)
+
+osamari-backend/
+├── index.js              # Node.js API to receive and convert content
+├── package.json          # Node.js project config
+
+-------------
+Features
+-------------
+✓ Extracts page title and body HTML
+✓ Converts HTML to Markdown using Turndown.js
+✓ Sends Markdown to a local backend API
+✓ Backend logs or processes Markdown (can be extended)
+
+-------------
+How It Works
+-------------
+1. User clicks the Chrome extension icon.
+2. Extension injects code into the page to extract content.
+3. Content is converted to Markdown using Turndown.js.
+4. Markdown is sent to a Node.js API at `http://localhost:3000/api/convert`.
+5. API processes and returns Markdown (or saves it if needed).
+
+-------------
+Setup Instructions
+-------------
+
+1. **Install Backend**
+
+   ```bash
+   cd osamari-backend
+   npm install
+   node index.js
+   ```

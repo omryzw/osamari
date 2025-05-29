@@ -23,7 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const bodyHTML = document.body.innerHTML;
             const turndownService = new window.TurndownService();
             const markdown = turndownService.turndown(`<h1>${title}</h1>${bodyHTML}`);
-            return markdown;
+            // Format markdown: convert **bold** to <strong>bold</strong> and preserve spacing
+            let formatted = markdown.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            // Replace double newlines with <br><br> for spacing
+            formatted = formatted.replace(/\n\n/g, '<br><br>');
+            return formatted;
           }
         }, async (results) => {
           const markdown = results[0].result;
@@ -37,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             loading.style.display = 'none';
             summaryDiv.style.display = 'block';
-            summaryDiv.textContent = data.summary || 'No summary returned.';
+            // Render summary as HTML, supporting <strong> and spacing
+            summaryDiv.innerHTML = data.summary || 'No summary returned.';
           } catch (e) {
             loading.style.display = 'none';
             summaryDiv.style.display = 'block';

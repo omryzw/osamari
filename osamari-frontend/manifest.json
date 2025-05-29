@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Send Page to Markdown API",
+  "name": "Osamari",
   "version": "1.0",
   "permissions": ["scripting", "activeTab"],
   "host_permissions": ["<all_urls>"],
   "action": {
-    "default_title": "Convert Page to Markdown",
+    "default_title": "oSamari",
     "default_popup": "popup.html"
   },
   "background": {
